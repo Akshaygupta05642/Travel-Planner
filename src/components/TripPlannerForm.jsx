@@ -1,4 +1,3 @@
-jsx;
 import { useEffect, useState } from "react";
 import { CheckCircle2, Compass, Sparkles } from "lucide-react";
 import { interestOptions } from "../data/destinations";
