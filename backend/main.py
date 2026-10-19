@@ -24,10 +24,20 @@ from dotenv import load_dotenv
 from google import genai
 from google.genai import types
 from pydantic import BaseModel, Field
-
+from fastapi.middleware.cors import CORSMiddleware
 load_dotenv()
 
 app = FastAPI(title="TravelPlanner API")
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=[
+        "https://travel-planner-one-wine.vercel.app",
+        "http://localhost:5173",
+    ],
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
 class AIItineraryRequest(BaseModel):
     destination: str = Field(min_length=2, max_length=120)
     departure_city: str = Field(min_length=2, max_length=120)
