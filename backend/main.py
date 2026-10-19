@@ -484,7 +484,7 @@ Treat accommodation prices as estimates, not confirmed quotes.
             "message": "AI itinerary generated successfully",
             "itinerary": result,
         }
-
+    
     except HTTPException:
         raise
 
@@ -495,11 +495,12 @@ Treat accommodation prices as estimates, not confirmed quotes.
         )
 
     except Exception as error:
-         print(
-        f"Gemini itinerary error: {type(error).__name__}: {error}",
-        flush=True,
-    )
-    raise HTTPException(
-        status_code=502,
-        detail=f"Gemini error type: {type(error).__name__}",
-    )
+        print(
+            f"Gemini itinerary error: {type(error).__name__}: {error}",
+            flush=True,
+        )
+        raise HTTPException(
+            status_code=502,
+            detail=f"Gemini error type: {type(error).__name__}",
+        )
+
