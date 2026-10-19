@@ -1,10 +1,12 @@
+jsx;
 import { useEffect, useState } from "react";
 import { CheckCircle2, Compass, Sparkles } from "lucide-react";
 import { interestOptions } from "../data/destinations";
 import "./TripPlannerForm.css";
 
+const API_BASE_URL = "https://travel-planner-k801.onrender.com";
+
 // Country and currency options.
-// Each country uses its ISO country code and currency code.
 const countries = [
   ["IN", "India", "INR"],
   ["US", "United States", "USD"],
@@ -219,9 +221,12 @@ function TripPlanner({ presetDestination = "" }) {
         (id) => interestOptions.find((item) => item.id === id)?.label || id,
       );
 
-      const response = await fetch("http://127.0.0.1:8000/ai/itinerary", {
+      // Send the request to the deployed Render backend.
+      const response = await fetch(`${API_BASE_URL}/ai/itinerary`, {
         method: "POST",
-        headers: { "Content-Type": "application/json" },
+        headers: {
+          "Content-Type": "application/json",
+        },
         body: JSON.stringify({
           destination: values.destination.trim(),
           departure_city: values.departureCity.trim(),
@@ -236,7 +241,11 @@ function TripPlanner({ presetDestination = "" }) {
       const data = await response.json();
 
       if (!response.ok) {
-        throw new Error(data.detail || "Unable to generate itinerary.");
+        throw new Error(
+          typeof data.detail === "string"
+            ? data.detail
+            : "Unable to generate itinerary. Please try again.",
+        );
       }
 
       if (!data.itinerary || !Array.isArray(data.itinerary.days)) {
@@ -277,7 +286,7 @@ function TripPlanner({ presetDestination = "" }) {
     } catch (error) {
       setApiError(
         error.message === "Failed to fetch"
-          ? "Cannot connect to the backend or exchange-rate service. Check your internet connection and ensure FastAPI is running on port 8000."
+          ? "Cannot connect to the deployed backend or exchange-rate service. Please check your internet connection and try again."
           : error.message || "Something went wrong. Please try again.",
       );
     } finally {
@@ -438,7 +447,9 @@ function TripPlanner({ presetDestination = "" }) {
               </div>
 
               <div
-                className={`field field-full ${errors.interests ? "has-error" : ""}`}
+                className={`field field-full ${
+                  errors.interests ? "has-error" : ""
+                }`}
               >
                 <label>Travel interests *</label>
                 <div className="interests">
@@ -470,6 +481,7 @@ function TripPlanner({ presetDestination = "" }) {
                     )}
                   </strong>
                 </div>
+
                 <div className="summary-item">
                   <span>Per traveler</span>
                   <strong>
@@ -479,10 +491,12 @@ function TripPlanner({ presetDestination = "" }) {
                     )}
                   </strong>
                 </div>
+
                 <div className="summary-item">
                   <span>Travelers</span>
                   <strong>{itinerary.travelers}</strong>
                 </div>
+
                 <div className="summary-item">
                   <span>Interests</span>
                   <strong>{itinerary.interests.join(", ")}</strong>

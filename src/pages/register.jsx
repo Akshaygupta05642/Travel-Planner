@@ -1,5 +1,7 @@
 import { useState } from "react";
 
+const API_BASE_URL = "https://travel-planner-k801.onrender.com";
+
 function Register({ onRegister, onLogin }) {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
@@ -11,7 +13,7 @@ function Register({ onRegister, onLogin }) {
     setMessage("Creating account...");
 
     try {
-      const response = await fetch("http://127.0.0.1:8000/register", {
+      const response = await fetch(`${API_BASE_URL}/register`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ name, email, password }),

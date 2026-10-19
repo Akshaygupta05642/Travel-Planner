@@ -8,6 +8,8 @@ import Footer from "./components/Footer";
 import Login from "./pages/login";
 import Register from "./pages/register";
 
+const API_BASE_URL = "https://travel-planner-k801.onrender.com";
+
 function App() {
   const [presetDestination, setPresetDestination] = useState("");
   const [page, setPage] = useState("home");
@@ -30,7 +32,7 @@ function App() {
       }
 
       try {
-        const response = await fetch("http://127.0.0.1:8000/me", {
+        const response = await fetch(`${API_BASE_URL}/me`, {
           headers: {
             Authorization: `Bearer ${token}`,
           },
@@ -73,7 +75,7 @@ function App() {
     try {
       const token = data?.access_token || localStorage.getItem("access_token");
 
-      const response = await fetch("http://127.0.0.1:8000/me", {
+      const response = await fetch(`${API_BASE_URL}/me`, {
         headers: {
           Authorization: `Bearer ${token}`,
         },
