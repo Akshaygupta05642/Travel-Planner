@@ -1,0 +1,228 @@
+:root {
+  --navy: #0f4c5c;
+  --navy-deep: #0b3641;
+  --navy-soft: #1a6578;
+  --coral: #e07a5f;
+  --coral-hover: #c9654c;
+  --sand: #e8c39e;
+  --cream: #f7f1e8;
+  --ivory: #fbf8f3;
+  --ink: #1c1917;
+  --muted: #5c5752;
+  --line: rgba(15, 76, 92, 0.12);
+  --white: #ffffff;
+  --shadow: 0 18px 50px rgba(15, 76, 92, 0.12);
+  --shadow-soft: 0 10px 30px rgba(28, 25, 23, 0.08);
+  --radius: 20px;
+  --heading: "Cormorant Garamond", Georgia, serif;
+  --body: "Outfit", system-ui, sans-serif;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  font-family: var(--body);
+  color: var(--ink);
+  background: var(--ivory);
+  letter-spacing: 0.01em;
+}
+
+img {
+  max-width: 100%;
+  display: block;
+}
+
+button,
+input,
+select {
+  font-family: inherit;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+#root {
+  min-height: 100vh;
+}
+
+.section {
+  padding: 88px 24px;
+}
+
+.section-inner {
+  width: min(1120px, 100%);
+  margin: 0 auto;
+}
+
+.eyebrow {
+  display: inline-block;
+  margin: 0 0 12px;
+  color: var(--navy-soft);
+  font-size: 0.78rem;
+  font-weight: 600;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+}
+
+.section h2 {
+  margin: 0 0 12px;
+  font-family: var(--heading);
+  font-size: clamp(2.1rem, 4vw, 3.2rem);
+  font-weight: 600;
+  line-height: 1.15;
+  color: var(--navy-deep);
+}
+
+.section-lead {
+  max-width: 560px;
+  margin: 0 0 40px;
+  color: var(--muted);
+  font-size: 1.05rem;
+  line-height: 1.7;
+}
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  border: 0;
+  border-radius: 999px;
+  padding: 13px 24px;
+  font-size: 0.95rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition:
+    transform 0.2s ease,
+    background 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+.btn:hover {
+  transform: translateY(-1px);
+}
+
+.btn-primary {
+  background: var(--coral);
+  color: var(--white);
+  box-shadow: 0 10px 24px rgba(224, 122, 95, 0.28);
+}
+
+.btn-primary:hover {
+  background: var(--coral-hover);
+}
+
+.btn-ghost {
+  background: rgba(255, 255, 255, 0.14);
+  color: var(--white);
+  border: 1px solid rgba(255, 255, 255, 0.28);
+}
+
+.btn-navy {
+  background: var(--navy);
+  color: var(--white);
+}
+
+.btn-navy:hover {
+  background: var(--navy-deep);
+}
+
+.btn-text {
+  background: transparent;
+  color: var(--muted);
+  box-shadow: none;
+}
+
+@media (max-width: 720px) {
+  .section {
+    padding: 64px 18px;
+  }
+}
+
+/* Login and Register pages */
+.auth-page {
+  width: min(420px, calc(100% - 32px));
+  margin: 64px auto;
+  padding: 36px;
+  box-sizing: border-box;
+  background: #ffffff;
+  border: 1px solid #e5e7eb;
+  border-radius: 20px;
+  box-shadow: 0 12px 35px rgba(0, 0, 0, 0.08);
+  text-align: center;
+}
+
+.auth-page h1 {
+  margin: 0 0 10px;
+  color: #173c35;
+  font-size: 30px;
+}
+
+.auth-page > p {
+  color: #64748b;
+  line-height: 1.6;
+}
+
+.auth-page form {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  margin-top: 24px;
+}
+
+.auth-page input {
+  width: 100%;
+  box-sizing: border-box;
+  padding: 14px 16px;
+  border: 1px solid #d1d5db;
+  border-radius: 10px;
+  font: inherit;
+  outline: none;
+}
+
+.auth-page input:focus {
+  border-color: #168574;
+  box-shadow: 0 0 0 3px rgba(22, 133, 116, 0.12);
+}
+
+.auth-page form button {
+  padding: 14px;
+  border: none;
+  border-radius: 10px;
+  background: #167d6a;
+  color: white;
+  font: inherit;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.auth-page form button:hover {
+  background: #116354;
+}
+
+.auth-page > p button {
+  border: none;
+  background: transparent;
+  color: #167d6a;
+  font: inherit;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+@media (max-width: 480px) {
+  .auth-page {
+    margin: 32px auto;
+    padding: 24px;
+  }
+}

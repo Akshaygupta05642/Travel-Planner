@@ -1,0 +1,163 @@
+.planner {
+  background: linear-gradient(180deg, #efe6d8 0%, var(--ivory) 28%);
+}
+
+.form-card {
+  background: var(--white);
+  border: 1px solid var(--line);
+  border-radius: 28px;
+  box-shadow: var(--shadow);
+  padding: 36px;
+}
+
+.form-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px 18px;
+}
+
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.field-full {
+  grid-column: 1 / -1;
+}
+
+.field label {
+  font-size: 0.88rem;
+  font-weight: 600;
+  color: var(--navy);
+}
+
+.required {
+  color: var(--coral);
+}
+
+.field input,
+.field select {
+  width: 100%;
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  padding: 13px 14px;
+  background: #fcfbf8;
+  color: var(--ink);
+  font-size: 0.98rem;
+  outline: none;
+}
+
+.field input:focus,
+.field select:focus {
+  border-color: var(--navy-soft);
+  box-shadow: 0 0 0 4px rgba(15, 76, 92, 0.08);
+}
+
+.field.has-error input,
+.field.has-error select {
+  border-color: #c2410c;
+}
+
+.error-text {
+  margin: 0;
+  color: #b45309;
+  font-size: 0.8rem;
+}
+
+.interests {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.interest-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 14px;
+  border-radius: 999px;
+  border: 1px solid var(--line);
+  background: var(--ivory);
+  color: var(--navy);
+  font-size: 0.9rem;
+  font-weight: 500;
+  cursor: pointer;
+}
+
+.interest-chip input {
+  accent-color: var(--navy);
+}
+
+.form-actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 16px;
+  margin-top: 28px;
+}
+
+.form-note {
+  margin: 0;
+  color: var(--muted);
+  font-size: 0.88rem;
+}
+
+.success-banner {
+  display: flex;
+  gap: 12px;
+  margin-bottom: 24px;
+  padding: 16px 18px;
+  border-radius: 16px;
+  background: #ecfdf3;
+  color: #166534;
+}
+
+.success-banner h3 {
+  margin: 0 0 4px;
+  font-size: 1rem;
+}
+
+.success-banner p {
+  margin: 0;
+  font-size: 0.9rem;
+  line-height: 1.5;
+}
+
+.summary-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px;
+  margin-top: 18px;
+}
+
+.summary-item {
+  padding: 14px;
+  border-radius: 14px;
+  background: var(--cream);
+}
+
+.summary-item span {
+  display: block;
+  margin-bottom: 4px;
+  color: var(--muted);
+  font-size: 0.75rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.summary-item strong {
+  color: var(--navy-deep);
+  font-weight: 600;
+}
+
+@media (max-width: 720px) {
+  .form-card {
+    padding: 22px;
+  }
+
+  .form-grid,
+  .summary-grid {
+    grid-template-columns: 1fr;
+  }
+}
